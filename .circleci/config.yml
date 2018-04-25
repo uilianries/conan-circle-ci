@@ -12,6 +12,12 @@ version: 2
         command: |
           chmod +x .circleci/run.sh
           .circleci/run.sh
+        environment:
+          CONAN_REFERENCE: foobar/0.1.0
+          CONAN_USERNAME: uilianries
+          CONAN_CHANNEL: testing
+          CONAN_UPLOAD: https://api.bintray.com/conan/uilianries/conan
+          CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
 
 jobs:
   xcode8:
