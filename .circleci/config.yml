@@ -1,0 +1,92 @@
+version: 2
+.conan-steps: &conan-steps
+  steps:
+    - checkout
+    - run:
+        name: Update Conan package
+        command: |
+          chmod +x .circleci/install.sh
+          .circleci/install.sh
+    - run:
+        name: Build recipe
+        command: |
+          chmod +x .circleci/run.sh
+          .circleci/run.sh
+
+jobs:
+  xcode8:
+    macos:
+      xcode: "8.3.3"
+    environment:
+      - CONAN_APPLE_CLANG_VERSIONS: "8.1"
+    <<: *conan-steps
+
+  xcode9:
+    macos:
+      xcode: "9.0"
+    environment:
+      - CONAN_APPLE_CLANG_VERSIONS: "9.0"
+    <<: *conan-steps
+
+  gcc-49:
+    docker:
+      - image: lasote/conangcc49
+    environment:
+      - CONAN_GCC_VERSIONS: "4.9"
+    <<: *conan-steps
+
+  gcc-5:
+    docker:
+      - image: lasote/conangcc5
+    environment:
+      - CONAN_GCC_VERSIONS: "5"
+    <<: *conan-steps
+
+  gcc-6:
+    docker:
+      - image: lasote/conangcc6
+    environment:
+      - CONAN_GCC_VERSIONS: "6"
+    <<: *conan-steps
+
+  gcc-7:
+    docker:
+      - image: lasote/conangcc7
+    environment:
+      - CONAN_GCC_VERSIONS: "7"
+    <<: *conan-steps
+
+  clang-39:
+    docker:
+      - image: lasote/conanclang39
+    environment:
+      - CONAN_CLANG_VERSIONS: "3.9"
+    <<: *conan-steps
+
+  clang-40:
+    docker:
+      - image: lasote/conanclang40
+    environment:
+      - CONAN_CLANG_VERSIONS: "4.0"
+    <<: *conan-steps
+
+  clang-50:
+    docker:
+      - image: lasote/conanclang50
+    environment:
+      - CONAN_CLANG_VERSIONS: "5.0"
+    <<: *conan-steps
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - gcc-49
+      - gcc-5
+      - gcc-6
+      - gcc-7
+      - clang-39
+      - clang-40
+      - clang-50
+      - xcode8
+      - xcode9
