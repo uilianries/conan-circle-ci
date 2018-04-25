@@ -18,7 +18,6 @@ version: 2
           CONAN_CHANNEL: testing
           CONAN_UPLOAD: https://api.bintray.com/conan/uilianries/conan
           CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
-
 jobs:
   xcode8:
     macos:
