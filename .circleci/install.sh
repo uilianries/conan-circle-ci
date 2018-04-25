@@ -3,9 +3,11 @@
 set -e
 set -x
 
-brew update || brew update
-brew install cmake || true
+if [[ "$(uname -s)" == 'Darwin' ]]; then
+    brew update || brew update
+    brew install cmake || true
+fi
 
 pip install conan --upgrade
-pip install conan_package_tools 
+pip install conan_package_tools
 conan user
