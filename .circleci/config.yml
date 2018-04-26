@@ -82,19 +82,13 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-
       - gcc-49
-
       - gcc-5
-
       - gcc-6
-
       - gcc-7
-
       - clang-39
-
       - clang-40
-
       - xcode-8.3.3
-
       - xcode-9.0
+
+
