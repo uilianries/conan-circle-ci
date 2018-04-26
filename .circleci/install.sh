@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 set -e
@@ -12,5 +13,5 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 fi
 
 $SUDO pip install conan --upgrade
-$SUDO pip install conan_package_tools==0.17.0-beta2
+$SUDO pip install conan_package_tools
 conan user
