@@ -14,11 +14,10 @@ version: 2
           chmod +x .circleci/run.sh
           .circleci/run.sh
         environment:
-          CONAN_REFERENCE: foobar/0.1.0
-          CONAN_USERNAME: uilianries
-          CONAN_CHANNEL: testing
+          CONAN_REFERENCE: "foobar/0.1.0"
+          CONAN_USERNAME: "uilianries"
+          CONAN_CHANNEL: "testing"
           CONAN_UPLOAD: "https://api.bintray.com/conan/uilianries/conan"
-          CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
 
 jobs:
 
@@ -26,56 +25,56 @@ jobs:
       docker:
         - image: lasote/conangcc49
       environment:
-        - CONAN_GCC_VERSIONS: 4.9
+        - CONAN_GCC_VERSIONS: "4.9"
       <<: *conan-steps
 
   gcc-5:
       docker:
         - image: lasote/conangcc5
       environment:
-        - CONAN_GCC_VERSIONS: 5
+        - CONAN_GCC_VERSIONS: "5"
       <<: *conan-steps
 
   gcc-6:
       docker:
         - image: lasote/conangcc6
       environment:
-        - CONAN_GCC_VERSIONS: 6
+        - CONAN_GCC_VERSIONS: "6"
       <<: *conan-steps
 
   gcc-7:
       docker:
         - image: lasote/conangcc7
       environment:
-        - CONAN_GCC_VERSIONS: 7
+        - CONAN_GCC_VERSIONS: "7"
       <<: *conan-steps
 
   clang-39:
       docker:
         - image: lasote/conanclang39
       environment:
-        - CONAN_CLANG_VERSIONS: 3.9
+        - CONAN_CLANG_VERSIONS: "3.9"
       <<: *conan-steps
 
   clang-40:
       docker:
         - image: lasote/conanclang40
       environment:
-        - CONAN_CLANG_VERSIONS: 4.0
+        - CONAN_CLANG_VERSIONS: "4.0"
       <<: *conan-steps
 
   xcode-8.3.3:
       macos:
         xcode: "8.3.3"
       environment:
-        - CONAN_APPLE_CLANG_VERSIONS: 8.1
+        - CONAN_APPLE_CLANG_VERSIONS: "8.1"
       <<: *conan-steps
 
   xcode-9.0:
       macos:
         xcode: "9.0"
       environment:
-        - CONAN_APPLE_CLANG_VERSIONS: 9.0
+        - CONAN_APPLE_CLANG_VERSIONS: "9.0"
       <<: *conan-steps
 
 
